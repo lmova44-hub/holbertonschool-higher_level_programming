@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Rectangle module - empty rectangle class"""
+
 class Rectangle:
-    """Bu class masin yaradir"""
+    """Empty Rectangle class"""
     pass
