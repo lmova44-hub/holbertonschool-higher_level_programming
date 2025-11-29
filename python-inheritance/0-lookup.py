@@ -4,6 +4,7 @@ Module 0-lookup
 Contains a function that returns available attributes and methods of an object
 """
 
+
 def lookup(obj):
     """
     Returns a list of available attributes and methods of an object
