@@ -1,0 +1,3 @@
+-- salam
+-- aleykum
+SHOW TABLES;
