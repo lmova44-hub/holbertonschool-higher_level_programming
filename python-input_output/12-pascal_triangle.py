@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+k#!/usr/bin/python3
 """Module 11-student: defines Student class with serialization/deserialization"""
 
 
@@ -19,12 +19,11 @@ class Student:
         """
         if attrs is None:
             return self.__dict__.copy()
-        else:
-            filtered = {}
-            for key in attrs:
-                if key in self.__dict__:
-                    filtered[key] = self.__dict__[key]
-            return filtered
+        filtered = {}
+        for key in attrs or []:
+            if key in self.__dict__:
+                filtered[key] = self.__dict__[key]
+        return filtered
 
     def reload_from_json(self, json):
         """
