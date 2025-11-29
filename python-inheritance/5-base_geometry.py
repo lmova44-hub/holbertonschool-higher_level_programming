@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-
-Module 5 base geometry
+Module 5-base_geometry
 Contains an empty class BaseGeometry
 """
-class BaseGeomtry:
+
+
+class BaseGeometry:
     """Empty class BaseGeometry"""
     pass
