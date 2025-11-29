@@ -1,14 +1,22 @@
 #!/usr/bin/python3
-"""
-Module 6-load_from_json_file:
-Contains the function load_from_json_file.
-"""
-import json
+import sys
+from os import path
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
+filename = "add_item.json"
 
-def load_from_json_file(filename):
-    """
-    Creates an object from a JSON file.
-    """
-    with open(filename, "r", encoding="utf-8") as f:
-        return json.load(f)
+# Если файл существует — загружаем, иначе создаём пустой список
+if path.exists(filename):
+    try:
+        items = load_from_json_file(filename)
+    except Exception:
+        items = []
+else:
+    items = []
+
+# Добавляем аргументы командной строки (кроме имени скрипта)
+items.extend(sys.argv[1:])
+
+# Сохраняем обновлённый список
+save_to_json_file(items, filename)
