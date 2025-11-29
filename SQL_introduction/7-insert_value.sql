@@ -1,4 +1,4 @@
 -- odel
 -- love
-INSERT INTO first_table(id,name)
-VALUES (89,'BEST SCHOOL');
+INSERT INTO first_table (id, name)
+VALUES (89, 'Best School');
