@@ -1,3 +1,3 @@
 -- joiwdejidiwjoiw
 
-SELECT score , COUNT(*) AS number FROM second_table GROUP BY score ORDER BY DESC number DESC;
+SELECT score, COUNT(*) AS number FROM second_table GROUP BY score ORDER BY number DESC;
