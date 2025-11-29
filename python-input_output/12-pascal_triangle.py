@@ -1,23 +1,35 @@
 #!/usr/bin/python3
-"""Module 12-pascal_triangle: generates Pascal's triangle."""
+"""Module 11-student: defines Student class with serialization/deserialization"""
 
 
-def pascal_triangle(n):
-    """Return a list of lists representing Pascal's triangle of n rows."""
-    if n <= 0:
-        return []
+class Student:
+    """Student class with public attributes and JSON serialization"""
 
-    triangle = [[1]]  # İlk sətr həmişə [1]
+    def __init__(self, first_name, last_name, age):
+        """Initialize a Student instance"""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-    for i in range(1, n):
-        prev_row = triangle[i - 1]
-        # Yeni sətrin əvvəlcə 1 əlavə et
-        row = [1]
-        # Orta elementləri əvvəlki sətrdən hesabla
-        for j in range(1, i):
-            row.append(prev_row[j - 1] + prev_row[j])
-        # Yeni sətrin sonuna 1 əlavə et
-        row.append(1)
-        triangle.append(row)
+    def to_json(self, attrs=None):
+        """
+        Retrieve a dictionary representation of the Student instance.
+        If attrs is a list of strings, only include these attributes.
+        Otherwise, include all attributes.
+        """
+        if attrs is None:
+            return self.__dict__.copy()
+        else:
+            filtered = {}
+            for key in attrs:
+                if key in self.__dict__:
+                    filtered[key] = self.__dict__[key]
+            return filtered
 
-    return triangle
+    def reload_from_json(self, json):
+        """
+        Replace all attributes of the Student instance from json dict.
+        Assume json is a dictionary with valid public attributes.
+        """
+        for key, value in json.items():
+            setattr(self, key, value)
