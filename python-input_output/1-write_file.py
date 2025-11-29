@@ -1,5 +1,8 @@
-def write_file(filename="", text=""):
-    """Writes text to a UTF-8 file and returns
-    the number of characters written"""
-    with open(filename, "w", encoding="utf-8") as f:
-        return f.write(text)
+#!/usr/bin/python3
+"""Module 0-read_file: contains read_file function"""
+
+
+def read_file(filename=""):
+    """Reads a text file and prints it to stdout"""
+    with open(filename, "r", encoding="utf-8") as f:
+        print(f.read(), end="")
