@@ -1,17 +1,23 @@
 #!/usr/bin/python3
-"""
-Contains the clas "Student"
-"""
+"""Define a Student class with JSON serialization and deserialization."""
 
 
 class Student:
-    """Representation of a student"""
+    """Student class with first_name, last_name, and age attributes."""
+
     def __init__(self, first_name, last_name, age):
-        """Initializes the student"""
+        """Initialize a Student with first_name, last_name, and age."""
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
-    def to_json(self):
-        """returns a dictionary representation of a Student instance"""
-        return self.__dict__
+    def to_json(self, attrs=None):
+        """Return dictionary of instance attributes filter by attrs if given"""
+        if isinstance(attrs, list):
+            return {k: v for k, v in self.__dict__.items() if k in attrs}
+        return self.__dict__.copy()
+
+    def reload_from_json(self, json):
+        """Replace all attributes of the instance using a dictionary."""
+        for key, value in json.items():
+            setattr(self, key, value)
