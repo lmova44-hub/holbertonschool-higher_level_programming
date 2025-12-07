@@ -3,7 +3,7 @@ import os
 
 def create_database():
 
-    # Əvvəlki yanlış products.db varsa — sil
+    # Əgər products.db artıq varsa — SİL
     if os.path.exists("products.db"):
         os.remove("products.db")
 
