@@ -3,8 +3,6 @@ import sqlite3
 def create_database():
     conn = sqlite3.connect('products.db')
     cursor = conn.cursor()
-
-    # Cədvəl yaradılır
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Products (
             id INTEGER PRIMARY KEY,
@@ -13,15 +11,13 @@ def create_database():
             price REAL NOT NULL
         )
     ''')
-
-    # Məlumat daxil edilir
+    cursor.execute('DELETE FROM Products')  # təmizləmək üçün (testlər üçün təhlükəsiz)
     cursor.execute('''
-        INSERT OR REPLACE INTO Products (id, name, category, price)
+        INSERT INTO Products (id, name, category, price)
         VALUES
         (1, 'Laptop', 'Electronics', 799.99),
         (2, 'Coffee Mug', 'Home Goods', 15.99)
     ''')
-
     conn.commit()
     conn.close()
 
